@@ -9,6 +9,8 @@ data = numpy.float32(d)
 labels = numpy.array(l,'str')
 #print data, labels
 
+print(data)
+
 log_dir = '/dmhack2017/tensorBoard/logs'
 max_steps = 10000
 
