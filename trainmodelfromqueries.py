@@ -1,4 +1,4 @@
-#from gensim.models.keyedvectors import KeyedVectors
+#frm gensim.models.keyedvectors import KeyedVectors
 import gensim
 
 workpath = "c:\\users\\maschram\\downloads\\"
@@ -6,6 +6,7 @@ usephrase = True
 outsize=200
 minimum=10
 workers=4
+binoutput = True
 
 class queryiterator(object):
     def __init__ (self, filename):
@@ -26,8 +27,11 @@ if usephrase == False:
 else:
     phrasebin = gensim.models.Phrases(sourcedata)
     model = gensim.models.Word2Vec(phrasebin[sourcedata], min_count=minimum, workers=workers, size=outsize)
-    
-model.wv.save_word2vec_format(workpath+"testmodel.txt",binary=False)
+
+if binoutput==True:
+    model.wv.save_word2vec_format(workpath+"testmodel.bin",binary=True)
+else:
+    model.wv.save_word2vec_format(workpath+"testmodel.txt",binary=False)
 
 
 
